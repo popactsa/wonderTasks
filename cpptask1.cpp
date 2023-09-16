@@ -3,9 +3,8 @@
 #include <stdio.h>   
 #include <stdlib.h> 
 
-class array{
-    int a5[5];
-    
+struct for_a5{
+    int m;
 };
 
 int main(void){
@@ -14,22 +13,24 @@ int main(void){
     using type_for_a2 = int[5];
     type_for_a2 a2;
 
-    int *a3 = (int*)malloc(5);
+    int *a3 = (int*)malloc(5*sizeof(int));
     if (a3){
-        for (int i = 0; i < 5; ++i){
-            a3[i] = i;
-            std::cout << (a3[i]) << std::endl ;
-        }
+        // for (int i = 0; i < 5; ++i){
+        //     a3[i] = i;
+        //     std::cout << (a3[i]) << std::endl ;
+        // }
     }
 
     int *a4;
-    a4 = (int*) calloc(5, sizeof(int));
+    a4 = (int*) calloc(5* sizeof(int));
     if (a4){
-        for (int i = 0; i < 5; ++i){
-            a4[i] = i;
-            std::cout << (a4[i]) << std::endl ;
-        }
+        // for (int i = 0; i < 5; ++i){
+        //     a4[i] = i;
+        //     std::cout << (a4[i]) << std::endl ;
+        // }
     }
-
-    int array::a5[5] = {0, 1, 2, 3, 4};
+    for_a5 a5[5] = {0, 1, 2, 3, 4};
+    for (int i = 0; i < 5; ++i){
+        std::cout << 
+    }
 }
