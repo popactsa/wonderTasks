@@ -62,6 +62,7 @@ int main(){
         if (guess_counter == wsize){
             status = 0;
             std::cout<<"Вы выиграли!"<<std::endl;
+            //df
         }
     }
 }
