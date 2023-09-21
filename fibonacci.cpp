@@ -26,6 +26,7 @@ int main(){
             goto entry;
         }
     }
+    //
     unsigned int num = stoi(num_entered);
     if (num > 100 ^ num == 0){
         std::cout<<"incorrect value"<<std::endl;

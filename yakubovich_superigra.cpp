@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <string>  
+#include <string> 
+#include <windows.h> 
 
 int guess_counter = 0;
 
@@ -18,26 +19,30 @@ void show(std::vector<char>word, std::vector<bool>revealed){
     std::cout<<std::endl<<std::endl;
 }
 
-bool finder_letter(std::vector<char>word, char let, std::vector<bool>revealed){
+bool finder_letter(std::vector<char>word, char let, std::vector<bool> &revealed){
     int n = word.size();
     bool status = false;
     for (int i = 0; i < n; ++i){
-        if (word[i] == let && revealed[i] == false){
-            revealed[i] = true;
+        if (word[i] == let & revealed[i] == false){
+            revealed[i] = 1;
             status = true;
             guess_counter++;
         }
-        else if(word[i] == let && revealed[i] == true){
-            status = 0;
-            continue;
+        else if(word[i] == let & revealed[i] == true){
+            status = false;
+            break;
         }
     }
     return status;
 }
 
 int main(){
-    setlocale(LC_ALL, "Russian");
+    setlocale(LC_ALL, ".1251");
     std::string word_ = "moloko";
+    //no russian localization
+    int cp = GetConsoleCP();
+    SetConsoleCP(1251);
+    SetConsoleCP(cp);
     std::vector<char>word;
     for(char i : word_){
         word.push_back(i);
@@ -62,7 +67,6 @@ int main(){
         if (guess_counter == wsize){
             status = 0;
             std::cout<<"Вы выиграли!"<<std::endl;
-            //df
         }
     }
 }
