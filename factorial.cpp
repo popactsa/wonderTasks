@@ -20,7 +20,6 @@ int main(){
             goto entry;
         }
     }
-    //
     unsigned long long num = stoi(num_entered);
     if (num > 1000){
         std::cout<<"a value is too big"<<std::endl;

@@ -39,7 +39,7 @@ bool finder_letter(std::vector<char>word, char let, std::vector<bool> &revealed)
 int main(){
     setlocale(LC_ALL, ".1251");
     std::string word_ = "moloko";
-    //no russian localization
+    //no russian localizatioN
     int cp = GetConsoleCP();
     SetConsoleCP(1251);
     SetConsoleCP(cp);
