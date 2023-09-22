@@ -5,7 +5,7 @@
 
 int guess_counter = 0;
 
-void show(std::vector<char>word, std::vector<bool>revealed){
+void show(std::string word, std::vector<bool>revealed){
     int n = word.size();
     char blank = '-';
     for (int i = 0; i < n; ++i){
@@ -19,7 +19,7 @@ void show(std::vector<char>word, std::vector<bool>revealed){
     std::cout<<std::endl<<std::endl;
 }
 
-bool finder_letter(std::vector<char>word, char let, std::vector<bool> &revealed){
+bool finder_letter(std::string word, char let, std::vector<bool> &revealed){
     int n = word.size();
     bool status = false;
     for (int i = 0; i < n; ++i){
@@ -37,36 +37,34 @@ bool finder_letter(std::vector<char>word, char let, std::vector<bool> &revealed)
 }
 
 int main(){
-    setlocale(LC_ALL, ".1251");
-    std::string word_ = "moloko";
-    //no russian localizatioN
-    int cp = GetConsoleCP();
+    setlocale(LC_ALL, "Russian");
     SetConsoleCP(1251);
-    SetConsoleCP(cp);
-    std::vector<char>word;
-    for(char i : word_){
-        word.push_back(i);
-    }
-    int wsize = word.size();
-    std::vector<bool>revealed(wsize, 0);
+    SetConsoleOutputCP(1251);
+    std::string word_ = "ìîëîêî";
+    std::cout<<word_<<std::endl;
+    // int cp = GetConsoleCP();
+    // SetConsoleCP(1251);
+    // setlocale(LC_ALL, "Russian");
+    int wsize = word_.size();
+    std::vector<bool>revealed(wsize, false);
     int status = 1;
     char let;
     bool f; 
     while(status == 1){
-        std::cout<<"Ð’Ð°ÑˆÐ° Ð±ÑƒÐºÐ²Ð°?"<<std::endl;
+        std::cout<<"Âàøà áóêâà?"<<std::endl;
         std::cin>>let;
-        f = finder_letter(word, let, revealed);
+        f = finder_letter(word_, let, revealed);
 
         if (f == 0){
-            std::cout<<std::endl<<"Ð”Ð° Ñ‡Ñ‚Ð¾ Ð’Ñ‹!"<<std::endl;
+            std::cout<<std::endl<<"Äà ÷òî Âû!"<<std::endl;
         }
         else{
-            std::cout<<std::endl<<"ÐžÑ‚ÐºÑ€Ð¾Ð¹Ñ‚Ðµ Ð±ÑƒÐºÐ²Ñƒ!"<<std::endl;
+            std::cout<<std::endl<<"Îòêðîéòå áóêâó!"<<std::endl;
         }
-        show(word, revealed);
+        show(word_, revealed);
         if (guess_counter == wsize){
             status = 0;
-            std::cout<<"Ð’Ñ‹ Ð²Ñ‹Ð¸Ð³Ñ€Ð°Ð»Ð¸!"<<std::endl;
+            std::cout<<"Âû âûèãðàëè!"<<std::endl;
         }
     }
 }
