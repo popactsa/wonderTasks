@@ -21,6 +21,7 @@ std::string get_date()
             {
                 dot_counter++;
             }
+            //
             // дописать проверки на расположение точки
             if ((i < '0' || i > '9') && i != '.' || dot_counter >= 3)
             {
