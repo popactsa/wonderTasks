@@ -1,0 +1,13 @@
+all: test.exe
+
+test.exe: rectangles_collision.o CRectangleClass.o
+	g++ rectangles_collision.o CRectangleClass.o -o test.exe
+
+rectangle_collision.o: rectangles_collision.cpp
+	g++ -c rectangles_collision.cpp
+
+CRectangleClass.o: CRectangleClass.cpp
+	g++ -c CRectangleClass.cpp
+
+clean:
+	rm -rf *.o test.exe
